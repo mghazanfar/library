@@ -152,14 +152,7 @@ class CRUDUnit extends React.Component<
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        debugger;
-        readDocument(`${pathUsers}/${user.uid}`, (res: { data: () => {} }) => {
-          if (res.data()) return res;
-        });
         this.setState({ selectedCustomerUid: user.uid });
-        setDocument(`${pathCustomers}/${user.uid}`, {
-          name: "Kamran"
-        });
       } else {
         console.log("Error found for loggedin user");
         return null;
